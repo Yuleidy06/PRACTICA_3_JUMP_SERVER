@@ -1,0 +1,25 @@
+# =====================================================
+# Practica 4 - Configuracion de red de los contenedores (Edit config en GNS3)
+# =====================================================
+
+# --- PC-CON-PRIV (VLAN 10, DHCP con reserva 10.9.49.10) ---
+auto eth0
+iface eth0 inet dhcp
+
+# --- PC-SIN-PRIV (VLAN 10, DHCP con reserva 10.9.49.11) ---
+auto eth0
+iface eth0 inet dhcp
+
+# --- PC-CLIENTE (LAN del sitio cliente VPN) ---
+auto eth0
+iface eth0 inet static
+    address 10.9.52.10
+    netmask 255.255.255.0
+    gateway 10.9.52.1
+
+# --- ADMIN-PC (administracion del FortiGate) ---
+auto eth0
+iface eth0 inet static
+    address 192.168.100.10
+    netmask 255.255.255.0
+    gateway 192.168.100.1

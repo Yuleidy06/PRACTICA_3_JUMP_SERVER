@@ -1,0 +1,2604 @@
+ISP
+Connected to Dynamips VM "ISP" (ID 1, type c7200) - Console port
+Press ENTER to get the prompt.
+a 95134-1706
+
+
+
+Cisco IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)S6, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2014 by Cisco Systems, Inc.
+Compiled Fri 08-Aug-14 04:05 by prod_rel_team
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Cisco 7206VXR (NPE400) processor (revision A) with 491520K/32768K bytes of memory.
+Processor board ID 4279256517
+R7000 CPU at 150MHz, Implementation 39, Rev 2.1, 256KB L2, 512KB L3 Cache
+6 slot VXR midplane, Version 2.1
+
+Last reset from power-on
+
+PCI bus mb0_mb1 (Slots 0, 1, 3 and 5) has a capacity of 600 bandwidth points.
+Current configuration on bus mb0_mb1 has a total of 600 bandwidth points.
+This configuration is within the PCI bus capacity and is supported.
+
+PCI bus mb2 (Slots 2, 4, 6) has a capacity of 600 bandwidth points.
+Current configuration on bus mb2 has a total of 400 bandwidth points
+This configuration is within the PCI bus capacity and is supported.
+
+Please refer to the following document "Cisco 7200 Series Port Adaptor
+Hardware Configuration Guidelines" on Cisco.com <http://www.cisco.com>
+for c7200 bandwidth points oversubscription and usage guidelines.
+
+
+5 FastEthernet interfaces
+509K bytes of NVRAM.
+
+8192K bytes of Flash internal SIMM (Sector size 256K).
+% Crashinfo may not be recovered at bootflash:crashinfo
+% This file system device reports an error
+
+
+Press RETURN to get started!
+
+
+*Oct 11 03:40:15.079: %IFMGR-7-NO_IFINDEX_FILE: Unable to open nvram:/ifIndex-table No such file or directory
+*Oct 11 03:40:15.359: %DEC21140-1-INITFAIL: Unsupported PHY brand timed out, csr5=0x0
+*Oct 11 03:40:23.047: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Oct 11 03:40:23.059: %LINK-3-UPDOWN: Interface FastEthernet1/0, changed state to up
+*Oct 11 03:40:23.071: %LINK-3-UPDOWN: Interface FastEthernet1/1, changed state to up
+*Oct 11 03:40:23.071: %LINK-3-UPDOWN: Interface FastEthernet2/0, changed state to up
+*Oct 11 03:40:23.071: %LINK-3-UPDOWN: Interface FastEthernet2/1, changed state to up
+*Oct 11 03:40:25.335: %SYS-5-CONFIG_I: Configured from memory by console
+*Oct 11 03:40:25.979: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+*Oct 11 03:40:25.979: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to up
+*Oct 11 03:40:25.983: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/1, changed state to down
+*Oct 11 03:40:25.987: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet2/0, changed state to down
+*Oct 11 03:40:25.991: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet2/1, changed state to down
+*Oct 11 03:40:25.999: %LINK-5-CHANGED: Interface FastEthernet1/1, changed state to administratively down
+*Oct 11 03:40:26.583: %SYS-5-RESTART: System restarted --
+Cisco IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)S6, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2014 by Cisco Systems, Inc.
+Compiled Fri 08-Aug-14 04:05 by prod_rel_team
+*Oct 11 03:40:26.787: %LINK-5-CHANGED: Interface FastEthernet2/0, changed state to administratively down
+*Oct 11 03:40:26.791: %LINK-5-CHANGED: Interface FastEthernet2/1, changed state to administratively down
+ISP#
+ISP#enable
+ISP#terminal length 0
+ISP#show running-config
+Building configuration...
+
+Current configuration : 1113 bytes
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname ISP
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ description HACIA-FORTIGATE
+ ip address 200.9.49.1 255.255.255.252
+ duplex full
+!
+interface FastEthernet1/0
+ description HACIA-CLIENTE-REMOTO
+ ip address 201.9.49.1 255.255.255.252
+ speed auto
+ duplex auto
+!
+interface FastEthernet1/1
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/0
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/1
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ login
+!
+!
+end
+
+ISP#
+********************************************************************************************
+R-CLIENTE
+
+Connected to Dynamips VM "R-CLIENTE" (ID 2, type c7200) - Console port
+Press ENTER to get the prompt.
+ROMMON emulation microcode.
+
+                           Launching IOS image at 0x80008000...
+
+              Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+           cisco Systems, Inc.
+           170 West Tasman Drive
+           San Jose, California 95134-1706
+
+
+
+Cisco IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)S6, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2014 by Cisco Systems, Inc.
+Compiled Fri 08-Aug-14 04:05 by prod_rel_team
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Cisco 7206VXR (NPE400) processor (revision A) with 491520K/32768K bytes of memory.
+Processor board ID 4279256517
+R7000 CPU at 150MHz, Implementation 39, Rev 2.1, 256KB L2, 512KB L3 Cache
+6 slot VXR midplane, Version 2.1
+
+Last reset from power-on
+
+PCI bus mb0_mb1 (Slots 0, 1, 3 and 5) has a capacity of 600 bandwidth points.
+Current configuration on bus mb0_mb1 has a total of 600 bandwidth points.
+This configuration is within the PCI bus capacity and is supported.
+
+PCI bus mb2 (Slots 2, 4, 6) has a capacity of 600 bandwidth points.
+Current configuration on bus mb2 has a total of 400 bandwidth points
+This configuration is within the PCI bus capacity and is supported.
+
+Please refer to the following document "Cisco 7200 Series Port Adaptor
+Hardware Configuration Guidelines" on Cisco.com <http://www.cisco.com>
+for c7200 bandwidth points oversubscription and usage guidelines.
+
+
+5 FastEthernet interfaces
+509K bytes of NVRAM.
+
+8192K bytes of Flash internal SIMM (Sector size 256K).
+no cdp log mismatch duplex
+       ^
+% Invalid input detected at '^' marker.
+
+SETUP: new interface FastEthernet0/0 placed in "shutdown" state
+SETUP: new interface FastEthernet1/0 placed in "shutdown" state
+SETUP: new interface FastEthernet1/1 placed in "shutdown" state
+SETUP: new interface FastEthernet2/0 placed in "shutdown" state
+SETUP: new interface FastEthernet2/1 placed in "shutdown" state
+% Crashinfo may not be recovered at bootflash:crashinfo
+% This file system device reports an error
+
+
+Press RETURN to get started!
+
+
+*Oct 11 04:30:57.019: %IFMGR-7-NO_IFINDEX_FILE: Unable to open nvram:/ifIndex-table No such file or directory
+*Oct 11 04:30:57.239: %DEC21140-1-INITFAIL: Unsupported PHY brand timed out, csr5=0x0
+*Oct 11 04:31:00.163: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Oct 11 04:31:00.175: %LINK-3-UPDOWN: Interface FastEthernet1/0, changed state to up
+*Oct 11 04:31:00.179: %LINK-3-UPDOWN: Interface FastEthernet1/1, changed state to up
+*Oct 11 04:31:00.179: %LINK-3-UPDOWN: Interface FastEthernet2/0, changed state to up
+*Oct 11 04:31:00.179: %LINK-3-UPDOWN: Interface FastEthernet2/1, changed state to up
+*Oct 11 04:31:00.291: %SYS-5-CONFIG_I: Configured from memory by console
+*Oct 11 04:31:00.435: %SYS-5-RESTART: System restarted --
+Cisco IOS Software, 7200 Software (C7200-ADVENTERPRISEK9-M), Version 15.2(4)S6, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2014 by Cisco Systems, Inc.
+Compiled Fri 08-Aug-14 04:05 by prod_rel_team
+*Oct 11 04:31:01.339: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to down
+*Oct 11 04:31:01.343: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to down
+*Oct 11 04:31:01.347: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/1, changed state to down
+*Oct 11 04:31:01.351: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet2/0, changed state to down
+*Oct 11 04:31:01.351: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet2/1, changed state to down
+*Oct 11 04:31:02.291: %LINK-5-CHANGED: Interface FastEthernet0/0, changed state to administratively down
+*Oct 11 04:31:02.303: %LINK-5-CHANGED: Interface FastEthernet1/0, changed state to administratively down
+*Oct 11 04:31:02.315: %LINK-5-CHANGED: Interface FastEthernet1/1, changed state to administratively down
+*Oct 11 04:31:02.319: %LINK-5-CHANGED: Interface FastEthernet2/0, changed state to administratively down
+*Oct 11 04:31:02.323: %LINK-5-CHANGED: Interface FastEthernet2/1, changed state to administratively down
+R-CLIENTE#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R-CLIENTE(config)#crypto isakmp policy 10
+R-CLIENTE(config-isakmp)# encryption des
+R-CLIENTE(config-isakmp)# hash sha
+R-CLIENTE(config-isakmp)# authentication pre-share
+R-CLIENTE(config-isakmp)# group 5
+R-CLIENTE(config-isakmp)# lifetime 86400
+R-CLIENTE(config-isakmp)#exit
+R-CLIENTE(config)#crypto isakmp key Practica4VPN address 200.9.49.2
+R-CLIENTE(config)#crypto ipsec transform-set TS-VPN esp-des esp-sha-hmac
+R-CLIENTE(cfg-crypto-trans)# mode tunnel
+R-CLIENTE(cfg-crypto-trans)#exit
+R-CLIENTE(config)#$ 110 permit ip 10.9.52.0 0.0.0.255 10.9.50.8 0.0.0.7
+R-CLIENTE(config)#crypto map MAPA-VPN 10 ipsec-isakmp
+% NOTE: This new crypto map will remain disabled until a peer
+        and a valid access list have been configured.
+R-CLIENTE(config-crypto-map)# set peer 200.9.49.2
+R-CLIENTE(config-crypto-map)# set transform-set TS-VPN
+R-CLIENTE(config-crypto-map)# set pfs group5
+R-CLIENTE(config-crypto-map)# match address 110
+R-CLIENTE(config-crypto-map)#exit
+R-CLIENTE(config)#interface FastEthernet0/0
+R-CLIENTE(config-if)# crypto map MAPA-VPN
+R-CLIENTE(config-if)#end
+R-CLIENTE#write memory
+*Oct 11 04:31:33.599: %CRYPTO-6-ISAKMP_ON_OFF: ISAKMP is ON
+R-CLIENTE#write memory
+*Oct 11 04:31:33.631: %SYS-5-CONFIG_I: Configured from console by console
+R-CLIENTE#write memory
+Warning: Attempting to overwrite an NVRAM configuration previously written
+by a different version of the system image.
+Overwrite the previous NVRAM configuration?[confirm]
+Building configuration...
+[OK]
+R-CLIENTE#   ping 10.9.50.9 source 10.9.52.1
+                            ^
+% Invalid input detected at '^' marker.
+
+R-CLIENTE#ping 10.9.50.9 source 10.9.52.1
+                         ^
+% Invalid input detected at '^' marker.
+
+R-CLIENTE#ping 10.9.50.9 source FastEthernet1/0
+                         ^
+% Invalid input detected at '^' marker.
+
+R-CLIENTE#ping
+Protocol [ip]:
+% Unknown protocol - "", type "ping ?" for help
+R-CLIENTE#ping
+Protocol [ip]: Enter
+% Unknown protocol - "Enter", type "ping ?" for help
+R-CLIENTE#R-CLIENTE#ping
+           ^
+% Invalid input detected at '^' marker.
+
+R-CLIENTE#Protocol [ip]: ip
+             ^
+% Invalid input detected at '^' marker.
+
+R-CLIENTE#Target IP address: 10.9.50.9
+             ^
+% Invalid input detected at '^' marker.
+
+R-CLIENTE#Repeat count [5]: 5
+            ^
+% Invalid input detected at '^' marker.
+
+R-CLIENTE#Datagram size [100]: 100
+           ^
+% Invalid input detected at '^' marker.
+
+R-CLIENTE#Timeout in seconds [2]: 2
+           ^
+% Invalid input detected at '^' marker.
+
+R-CLIENTE#Extended commands [n]: y
+            ^
+% Invalid input detected at '^' marker.
+
+R-CLIENTE#ping
+Protocol [ip]: ip
+% Unknown protocol - "ip", type "ping ?" for help
+R-CLIENTE#   show crypto isakmp sa
+IPv4 Crypto ISAKMP SA
+dst             src             state          conn-id status
+
+IPv6 Crypto ISAKMP SA
+
+R-CLIENTE#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol
+FastEthernet0/0        unassigned      YES unset  administratively down down
+FastEthernet1/0        unassigned      YES unset  administratively down down
+FastEthernet1/1        unassigned      YES unset  administratively down down
+FastEthernet2/0        unassigned      YES unset  administratively down down
+FastEthernet2/1        unassigned      YES unset  administratively down down
+R-CLIENTE#ping 200.9.49.2
+% Unrecognized host or address, or protocol not running.
+
+R-CLIENTE#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R-CLIENTE(config)#interface FastEthernet0/0
+R-CLIENTE(config-if)#ip address 201.9.49.2 255.255.255.252
+R-CLIENTE(config-if)#no shutdown
+R-CLIENTE(config-if)#exit
+R-CLIENTE(config)#interface FastEthernet1/0
+R-CLIENTE(config-if)#ip address 10.9.52.1 255.255.255.0
+R-CLIENTE(config-if)#no shutdown
+R-CLIENTE(config-if)#exit
+R-CLIENTE(config)#ip route 0.0.0.0 0.0.0.0 201.9.49.1
+R-CLIENTE(config)#end
+R-CLIENTE#
+*Oct 11 04:34:23.567: %SYS-5-CONFIG_I: Configured from console by console
+R-CLIENTE#
+*Oct 11 04:34:23.575: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Oct 11 04:34:23.919: %LINK-3-UPDOWN: Interface FastEthernet1/0, changed state to up
+R-CLIENTE#
+*Oct 11 04:34:24.575: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+*Oct 11 04:34:24.919: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to up
+R-CLIENTE#ping 200.9.49.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 200.9.49.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 44/60/72 ms
+R-CLIENTE#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R-CLIENTE(config)#crypto isakmp policy 10
+R-CLIENTE(config-isakmp)#encryption des
+R-CLIENTE(config-isakmp)#hash sha
+R-CLIENTE(config-isakmp)#authentication pre-share
+R-CLIENTE(config-isakmp)#group 5
+R-CLIENTE(config-isakmp)#exit
+R-CLIENTE(config)#crypto isakmp key Practica4VPN address 200.9.49.2
+A pre-shared key for address mask 200.9.49.2 255.255.255.255 already exists!
+
+R-CLIENTE(config)#crypto ipsec transform-set TS-VPN esp-des esp-sha-hmac
+R-CLIENTE(cfg-crypto-trans)#exit
+R-CLIENTE(config)#$ 110 permit ip 10.9.52.0 0.0.0.255 10.9.50.8 0.0.0.7
+R-CLIENTE(config)#end
+R-CLIENTE#
+*Oct 11 04:34:41.915: %SYS-5-CONFIG_I: Configured from console by console
+R-CLIENTE#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R-CLIENTE(config)#crypto map MAPA-VPN 10 ipsec-isakmp
+R-CLIENTE(config-crypto-map)#set peer 200.9.49.2
+R-CLIENTE(config-crypto-map)#set transform-set TS-VPN
+R-CLIENTE(config-crypto-map)#set pfs group5
+R-CLIENTE(config-crypto-map)#match address 110
+R-CLIENTE(config-crypto-map)#exit
+R-CLIENTE(config)#interface FastEthernet0/0
+R-CLIENTE(config-if)#crypto map MAPA-VPN
+R-CLIENTE(config-if)#end
+R-CLIENTE#write memory
+Building configuration...
+
+*Oct 11 04:34:47.355: %SYS-5-CONFIG_I: Configured from console by console[OK]
+R-CLIENTE#show crypto isakmp sa
+IPv4 Crypto ISAKMP SA
+dst             src             state          conn-id status
+201.9.49.2      200.9.49.2      QM_IDLE           1001 ACTIVE
+
+IPv6 Crypto ISAKMP SA
+
+R-CLIENTE#enable
+R-CLIENTE#terminal length 0
+R-CLIENTE#show running-config
+Building configuration...
+
+Current configuration : 1545 bytes
+!
+! Last configuration change at 04:34:47 UTC Sun Oct 11 2026
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname R-CLIENTE
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip tcp synwait-time 5
+!
+!
+crypto isakmp policy 10
+ authentication pre-share
+ group 5
+crypto isakmp key Practica4VPN address 200.9.49.2
+!
+!
+crypto ipsec transform-set TS-VPN esp-des esp-sha-hmac
+ mode tunnel
+!
+!
+!
+crypto map MAPA-VPN 10 ipsec-isakmp
+ set peer 200.9.49.2
+ set transform-set TS-VPN
+ set pfs group5
+ match address 110
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 201.9.49.2 255.255.255.252
+ duplex full
+ crypto map MAPA-VPN
+!
+interface FastEthernet1/0
+ ip address 10.9.52.1 255.255.255.0
+ speed auto
+ duplex auto
+!
+interface FastEthernet1/1
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/0
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+interface FastEthernet2/1
+ no ip address
+ shutdown
+ speed auto
+ duplex auto
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 201.9.49.1
+!
+access-list 110 permit ip 10.9.52.0 0.0.0.255 10.9.50.8 0.0.0.7
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ login
+!
+!
+end
+
+R-CLIENTE#
+**************************************************************************************
+FW-FORTIGATE
+                    set category 5
+                next
+                edit 31
+                    set category 6
+                next
+                edit 32
+                    set category 12
+                next
+                edit 33
+                    set category 59
+                next
+                edit 34
+                    set category 62
+                next
+            end
+        end
+    next
+    edit "sniffer-profile"
+        set comment "Monitor web traffic."
+        config ftgd-wf
+            config filters
+                edit 1
+                next
+                edit 2
+                    set category 1
+                next
+                edit 3
+                    set category 2
+                next
+                edit 4
+                    set category 3
+                next
+                edit 5
+                    set category 4
+                next
+                edit 6
+                    set category 5
+                next
+                edit 7
+                    set category 6
+                next
+                edit 8
+                    set category 7
+                next
+                edit 9
+                    set category 8
+                next
+                edit 10
+                    set category 9
+                next
+                edit 11
+                    set category 11
+                next
+                edit 12
+                    set category 12
+                next
+                edit 13
+                    set category 13
+                next
+                edit 14
+                    set category 14
+                next
+                edit 15
+                    set category 15
+                next
+                edit 16
+                    set category 16
+                next
+                edit 17
+                    set category 17
+                next
+                edit 18
+                    set category 18
+                next
+                edit 19
+                    set category 19
+                next
+                edit 20
+                    set category 20
+                next
+                edit 21
+                    set category 23
+                next
+                edit 22
+                    set category 24
+                next
+                edit 23
+                    set category 25
+                next
+                edit 24
+                    set category 26
+                next
+                edit 25
+                    set category 28
+                next
+                edit 26
+                    set category 29
+                next
+                edit 27
+                    set category 30
+                next
+                edit 28
+                    set category 31
+                next
+                edit 29
+                    set category 33
+                next
+                edit 30
+                    set category 34
+                next
+                edit 31
+                    set category 35
+                next
+                edit 32
+                    set category 36
+                next
+                edit 33
+                    set category 37
+                next
+                edit 34
+                    set category 38
+                next
+                edit 35
+                    set category 39
+                next
+                edit 36
+                    set category 40
+                next
+                edit 37
+                    set category 41
+                next
+                edit 38
+                    set category 42
+                next
+                edit 39
+                    set category 43
+                next
+                edit 40
+                    set category 44
+                next
+                edit 41
+                    set category 46
+                next
+                edit 42
+                    set category 47
+                next
+                edit 43
+                    set category 48
+                next
+                edit 44
+                    set category 49
+                next
+                edit 45
+                    set category 50
+                next
+                edit 46
+                    set category 51
+                next
+                edit 47
+                    set category 52
+                next
+                edit 48
+                    set category 53
+                next
+                edit 49
+                    set category 54
+                next
+                edit 50
+                    set category 55
+                next
+                edit 51
+                    set category 56
+                next
+                edit 52
+                    set category 57
+                next
+                edit 53
+                    set category 58
+                next
+                edit 54
+                    set category 59
+                next
+                edit 55
+                    set category 61
+                next
+                edit 56
+                    set category 62
+                next
+                edit 57
+                    set category 63
+                next
+                edit 58
+                    set category 64
+                next
+                edit 59
+                    set category 65
+                next
+                edit 60
+                    set category 66
+                next
+                edit 61
+                    set category 67
+                next
+                edit 62
+                    set category 68
+                next
+                edit 63
+                    set category 69
+                next
+                edit 64
+                    set category 70
+                next
+                edit 65
+                    set category 71
+                next
+                edit 66
+                    set category 72
+                next
+                edit 67
+                    set category 75
+                next
+                edit 68
+                    set category 76
+                next
+                edit 69
+                    set category 77
+                next
+                edit 70
+                    set category 78
+                next
+                edit 71
+                    set category 79
+                next
+                edit 72
+                    set category 80
+                next
+                edit 73
+                    set category 81
+                next
+                edit 74
+                    set category 82
+                next
+                edit 75
+                    set category 83
+                next
+                edit 76
+                    set category 84
+                next
+                edit 77
+                    set category 85
+                next
+                edit 78
+                    set category 86
+                next
+                edit 79
+                    set category 87
+                next
+                edit 80
+                    set category 88
+                next
+                edit 81
+                    set category 89
+                next
+                edit 82
+                    set category 90
+                next
+                edit 83
+                    set category 91
+                next
+                edit 84
+                    set category 92
+                next
+                edit 85
+                    set category 93
+                next
+                edit 86
+                    set category 94
+                next
+                edit 87
+                    set category 95
+                next
+                edit 88
+                    set category 96
+                next
+                edit 89
+                    set category 97
+                next
+                edit 90
+                    set category 98
+                next
+                edit 91
+                    set category 99
+                next
+            end
+        end
+    next
+    edit "wifi-default"
+        set comment "Default configuration for offloading WiFi traffic."
+        set options block-invalid-url
+        config ftgd-wf
+            unset options
+            config filters
+                edit 1
+                    set action block
+                next
+                edit 2
+                    set category 2
+                    set action block
+                next
+                edit 3
+                    set category 7
+                    set action block
+                next
+                edit 4
+                    set category 8
+                    set action block
+                next
+                edit 5
+                    set category 9
+                    set action block
+                next
+                edit 6
+                    set category 11
+                    set action block
+                next
+                edit 7
+                    set category 13
+                    set action block
+                next
+                edit 8
+                    set category 14
+                    set action block
+                next
+                edit 9
+                    set category 15
+                    set action block
+                next
+                edit 10
+                    set category 16
+                    set action block
+                next
+                edit 11
+                    set category 26
+                    set action block
+                next
+                edit 12
+                    set category 57
+                    set action block
+                next
+                edit 13
+                    set category 61
+                    set action block
+                next
+                edit 14
+                    set category 63
+                    set action block
+                next
+                edit 15
+                    set category 64
+                    set action block
+                next
+                edit 16
+                    set category 65
+                    set action block
+                next
+                edit 17
+                    set category 66
+                    set action block
+                next
+                edit 18
+                    set category 67
+                    set action block
+                next
+                edit 19
+                    set category 83
+                    set action block
+                next
+                edit 20
+                    set category 86
+                    set action block
+                next
+                edit 21
+                    set category 88
+                    set action block
+                next
+                edit 22
+                    set category 90
+                    set action block
+                next
+                edit 23
+                    set category 91
+                    set action block
+                next
+                edit 24
+                    set category 96
+                    set action block
+                next
+                edit 25
+                    set category 98
+                    set action block
+                next
+                edit 26
+                    set category 99
+                    set action block
+                next
+                edit 27
+                    set category 1
+                next
+                edit 28
+                    set category 3
+                next
+                edit 29
+                    set category 4
+                next
+                edit 30
+                    set category 5
+                next
+                edit 31
+                    set category 6
+                next
+                edit 32
+                    set category 12
+                next
+                edit 33
+                    set category 59
+                next
+                edit 34
+                    set category 62
+                next
+            end
+        end
+    next
+    edit "monitor-all"
+        set comment "Monitor and log all visited URLs, flow-based."
+        config ftgd-wf
+            unset options
+            config filters
+                edit 1
+                    set category 1
+                next
+                edit 2
+                    set category 3
+                next
+                edit 3
+                    set category 4
+                next
+                edit 4
+                    set category 5
+                next
+                edit 5
+                    set category 6
+                next
+                edit 6
+                    set category 12
+                next
+                edit 7
+                    set category 59
+                next
+                edit 8
+                    set category 62
+                next
+                edit 9
+                    set category 83
+                next
+                edit 10
+                    set category 2
+                next
+                edit 11
+                    set category 7
+                next
+                edit 12
+                    set category 8
+                next
+                edit 13
+                    set category 9
+                next
+                edit 14
+                    set category 11
+                next
+                edit 15
+                    set category 13
+                next
+                edit 16
+                    set category 14
+                next
+                edit 17
+                    set category 15
+                next
+                edit 18
+                    set category 16
+                next
+                edit 19
+                    set category 57
+                next
+                edit 20
+                    set category 63
+                next
+                edit 21
+                    set category 64
+                next
+                edit 22
+                    set category 65
+                next
+                edit 23
+                    set category 66
+                next
+                edit 24
+                    set category 67
+                next
+                edit 25
+                    set category 19
+                next
+                edit 26
+                    set category 24
+                next
+                edit 27
+                    set category 25
+                next
+                edit 28
+                    set category 72
+                next
+                edit 29
+                    set category 75
+                next
+                edit 30
+                    set category 76
+                next
+                edit 31
+                    set category 26
+                next
+                edit 32
+                    set category 61
+                next
+                edit 33
+                    set category 86
+                next
+                edit 34
+                    set category 17
+                next
+                edit 35
+                    set category 18
+                next
+                edit 36
+                    set category 20
+                next
+                edit 37
+                    set category 23
+                next
+                edit 38
+                    set category 28
+                next
+                edit 39
+                    set category 29
+                next
+                edit 40
+                    set category 30
+                next
+                edit 41
+                    set category 33
+                next
+                edit 42
+                    set category 34
+                next
+                edit 43
+                    set category 35
+                next
+                edit 44
+                    set category 36
+                next
+                edit 45
+                    set category 37
+                next
+                edit 46
+                    set category 38
+                next
+                edit 47
+                    set category 39
+                next
+                edit 48
+                    set category 40
+                next
+                edit 49
+                    set category 42
+                next
+                edit 50
+                    set category 44
+                next
+                edit 51
+                    set category 46
+                next
+                edit 52
+                    set category 47
+                next
+                edit 53
+                    set category 48
+                next
+                edit 54
+                    set category 54
+                next
+                edit 55
+                    set category 55
+                next
+                edit 56
+                    set category 58
+                next
+                edit 57
+                    set category 68
+                next
+                edit 58
+                    set category 69
+                next
+                edit 59
+                    set category 70
+                next
+                edit 60
+                    set category 71
+                next
+                edit 61
+                    set category 77
+                next
+                edit 62
+                    set category 78
+                next
+                edit 63
+                    set category 79
+                next
+                edit 64
+                    set category 80
+                next
+                edit 65
+                    set category 82
+                next
+                edit 66
+                    set category 85
+                next
+                edit 67
+                    set category 87
+                next
+                edit 68
+                    set category 31
+                next
+                edit 69
+                    set category 41
+                next
+                edit 70
+                    set category 43
+                next
+                edit 71
+                    set category 49
+                next
+                edit 72
+                    set category 50
+                next
+                edit 73
+                    set category 51
+                next
+                edit 74
+                    set category 52
+                next
+                edit 75
+                    set category 53
+                next
+                edit 76
+                    set category 56
+                next
+                edit 77
+                    set category 81
+                next
+                edit 78
+                    set category 84
+                next
+                edit 79
+                next
+                edit 80
+                    set category 88
+                next
+                edit 81
+                    set category 89
+                next
+                edit 82
+                    set category 90
+                next
+                edit 83
+                    set category 91
+                next
+                edit 84
+                    set category 92
+                next
+                edit 85
+                    set category 93
+                next
+                edit 86
+                    set category 94
+                next
+                edit 87
+                    set category 95
+                next
+                edit 88
+                    set category 96
+                next
+                edit 89
+                    set category 97
+                next
+                edit 90
+                    set category 98
+                next
+                edit 91
+                    set category 99
+                next
+            end
+        end
+        set log-all-url enable
+        set web-content-log disable
+        set web-filter-command-block-log disable
+        set web-filter-cookie-log disable
+        set web-url-log disable
+        set web-invalid-domain-log disable
+        set web-ftgd-err-log disable
+    next
+    edit "WF-BLOQUEO-INVENTARIO"
+        config web
+            set urlfilter-table 1
+        end
+        config ftgd-wf
+            config filters
+                edit 1
+                    set category 1
+                next
+                edit 3
+                    set category 3
+                next
+                edit 4
+                    set category 4
+                next
+                edit 5
+                    set category 5
+                next
+                edit 6
+                    set category 6
+                next
+                edit 12
+                    set category 12
+                next
+                edit 59
+                    set category 59
+                next
+                edit 62
+                    set category 62
+                next
+                edit 83
+                    set category 83
+                    set action block
+                next
+                edit 96
+                    set category 96
+                    set action block
+                next
+                edit 98
+                    set category 98
+                    set action block
+                next
+                edit 99
+                    set category 99
+                    set action block
+                next
+                edit 2
+                    set category 2
+                    set action warning
+                next
+                edit 7
+                    set category 7
+                    set action warning
+                next
+                edit 8
+                    set category 8
+                    set action warning
+                next
+                edit 9
+                    set category 9
+                    set action warning
+                next
+                edit 11
+                    set category 11
+                    set action warning
+                next
+                edit 13
+                    set category 13
+                    set action warning
+                next
+                edit 14
+                    set category 14
+                    set action warning
+                next
+                edit 15
+                    set category 15
+                    set action warning
+                next
+                edit 16
+                    set category 16
+                    set action warning
+                next
+                edit 57
+                    set category 57
+                    set action warning
+                next
+                edit 63
+                    set category 63
+                    set action warning
+                next
+                edit 64
+                    set category 64
+                    set action warning
+                next
+                edit 65
+                    set category 65
+                    set action warning
+                next
+                edit 66
+                    set category 66
+                    set action warning
+                next
+                edit 67
+                    set category 67
+                    set action warning
+                next
+                edit 26
+                    set category 26
+                    set action block
+                next
+                edit 61
+                    set category 61
+                    set action block
+                next
+                edit 86
+                    set category 86
+                    set action block
+                next
+                edit 88
+                    set category 88
+                    set action block
+                next
+                edit 90
+                    set category 90
+                    set action block
+                next
+                edit 91
+                    set category 91
+                    set action block
+                next
+                edit 140
+                    set category 140
+                next
+                edit 141
+                    set category 141
+                next
+            end
+        end
+    next
+end
+config webfilter search-engine
+    edit "google"
+        set hostname ".*\\.google\\..*"
+        set url "^\\/((custom|search|images|videosearch|webhp)\\?)"
+        set query "q="
+        set safesearch url
+        set safesearch-str "&safe=active"
+    next
+    edit "yahoo"
+        set hostname ".*\\.yahoo\\..*"
+        set url "^\\/search(\\/video|\\/images){0,1}(\\?|;)"
+        set query "p="
+        set safesearch url
+        set safesearch-str "&vm=r"
+    next
+    edit "bing"
+        set hostname ".*\\.bing\\..*"
+        set url "^(\\/images|\\/videos)?(\\/search|\\/async|\\/asyncv2)\\?"
+        set query "q="
+        set safesearch header
+    next
+    edit "yandex"
+        set hostname "yandex\\..*"
+        set url "^\\/((yand|images\\/|video\\/)(search)|search\\/)\\?"
+        set query "text="
+        set safesearch url
+        set safesearch-str "&family=yes"
+    next
+    edit "youtube"
+        set hostname ".*youtube.*"
+        set safesearch header
+    next
+    edit "baidu"
+        set hostname ".*\\.baidu\\.com"
+        set url "^\\/s?\\?"
+        set query "wd="
+    next
+    edit "baidu2"
+        set hostname ".*\\.baidu\\.com"
+        set url "^\\/(ns|q|m|i|v)\\?"
+        set query "word="
+    next
+    edit "baidu3"
+        set hostname "tieba\\.baidu\\.com"
+        set url "^\\/f\\?"
+        set query "kw="
+    next
+    edit "vimeo"
+        set hostname ".*vimeo.*"
+        set url "^\\/search\\?"
+        set query "q="
+        set safesearch header
+    next
+    edit "yt-scan-1"
+        set url "www.youtube.com/user/"
+        set safesearch yt-scan
+    next
+    edit "yt-scan-2"
+        set url "www.youtube.com/youtubei/v1/browse"
+        set safesearch yt-scan
+    next
+    edit "yt-scan-3"
+        set url "www.youtube.com/youtubei/v1/player"
+        set safesearch yt-scan
+    next
+    edit "yt-scan-4"
+        set url "www.youtube.com/youtubei/v1/navigator"
+        set safesearch yt-scan
+    next
+    edit "yt-channel"
+        set url "www.youtube.com/channel"
+        set safesearch yt-channel
+    next
+    edit "yt-pattern"
+        set url "youtube.com/channel/"
+        set safesearch yt-pattern
+    next
+    edit "twitter"
+        set hostname "twitter\\.com"
+        set url "^\\/i\\/api\\/graphql\\/.*\\/UserByScreenName"
+        set query "variables="
+        set safesearch translate
+    next
+    edit "google-translate-1"
+        set hostname "translate\\.google\\..*"
+        set url "^\\/translate"
+        set query "u="
+        set safesearch translate
+    next
+    edit "google-translate-2"
+        set hostname ".*\\.translate\\.goog"
+        set url "^\\/"
+        set safesearch translate
+    next
+    edit "translate"
+        set hostname "translate\\.google\\..*"
+        set url "^\\/translate\\?"
+        set query "u="
+        set safesearch translate
+    next
+end
+config emailfilter profile
+    edit "sniffer-profile"
+        set comment "Malware and phishing URL monitoring."
+        config imap
+        end
+        config pop3
+        end
+        config smtp
+        end
+    next
+    edit "default"
+        set comment "Malware and phishing URL filtering."
+        config imap
+        end
+        config pop3
+        end
+        config smtp
+        end
+    next
+end
+config wanopt settings
+    set host-id "default-id"
+end
+config wanopt profile
+    edit "default"
+        set comments "Default WANopt profile."
+    next
+end
+config log memory setting
+    set status enable
+end
+config log null-device setting
+    set status disable
+end
+config firewall schedule recurring
+    edit "always"
+        set day sunday monday tuesday wednesday thursday friday saturday
+    next
+    edit "none"
+    next
+    edit "default-darrp-optimize"
+        set start 01:00
+        set end 01:30
+        set day sunday monday tuesday wednesday thursday friday saturday
+    next
+end
+config firewall ssh local-key
+    edit "Fortinet_SSH_RSA2048"
+        set password ENC HtHvkK1Rp5b3Z0D8w/2+izIMjD9McsiFbpqDlJtdXHhlnTOE/rKQA9e3elS26azJIluFe9jaMN2Ve2rgAdBJP2BNjs6bzxqnhAWEuc6WPIj5oI181Veg0VxeqwlBy/bswo6EMoAYu3RtmhLzV43mJgAOvVVTyStlKRY2fn4RABGpv6b9bSueFhFVuHEv9nYVsVswtg==
+        set source built-in
+    next
+    edit "Fortinet_SSH_DSA1024"
+        set password ENC fpuDHrR3BJXlcJXS7goDvap3/92ZOPHZcuhag1JJIAdPqgyl0ipqCLkryz/d2v4ts8uFoRdZFPMWCgvqwjWu1rQqvICi7vAOQAeiMu7tPZ4edrRNyrSnMoRw5fcUQuTUHJgx7CjeglqnvgZK5z/bQo8XqC8nmhnlFL9W3qWKlIbMEzFjeAfxzLcdMSccJhzjtMyHGw==
+        set source built-in
+    next
+    edit "Fortinet_SSH_ECDSA256"
+        set password ENC 67yROaaEd7nZit3zk0L8ILxTHUMKHG/p/my66HAmGVGErOxvXArWmA/0Evb0G/UjwYcX/H7Y3hV0M0M3W5XUHazfDgiXefOUtI21pPIwx02W7w/cRisuqSdX67Li+3ZSdJOemQaKbde9/5tbnsbZBLUb22LMrhNEfHamf6bGdBmFLWFOdlxyfuYLev7Pe/Ci+vfycQ==
+        set source built-in
+    next
+    edit "Fortinet_SSH_ECDSA384"
+        set password ENC FxWBxYUah4KIdOoLsR3mxZU3Jn69J0HABmMP1zIL/4M/+9D+opJz8GFima10BSIutWfUtZ5/VqKnCL6Xaw09Z9AgE7MWtpI6QWQeyBcuN/MKoMEFp9G/10Q0dbOv1n+uLdJfLrO9LqgcXDqsv5jNu+lGq6qidkq8HrIbs/pyLWDZYFHYIAA3kaTb/xCjbAOQnaNsUA==
+        set source built-in
+    next
+    edit "Fortinet_SSH_ECDSA521"
+        set password ENC aVmvzwOvUI2ubm67H+/+Rxqth5nKJ99agMzBlsDYnKl2SZDiaFqE/+geKAJpkHY5R4JKeg775B4/Re8e7dRdrirrqUZsEwURYU3oW5ON04nafzX2aCQqcktVT+0wf8Y+v+TxCEvkgbrI9zxqPPSEgW4NQkWws7Zsp/TOhB7QuQtQN2DlD/DAiOzkMkotYEjC0+pGtw==
+        set source built-in
+    next
+    edit "Fortinet_SSH_ED25519"
+        set password ENC aG4+uJdXGHQ1H6YeS4s27KCQg+wnpFaRbKNZWGGdiJjn5KAzStUMCwa/M0Xo92RSgsNXNRi8Ra7jZvxuLC/UpH8aOjHDsQjluVWSu9P2qTHqJI8+1zzQVN7Xsj3a2TlgpWFQ17OkUs0dUoTdUr7CwUYcIZyXgzxpjmJw4BS+sWiiMfjObxgfl0tYsd4olvxpR623Fg==
+        set source built-in
+    next
+end
+config firewall ssh local-ca
+    edit "Fortinet_SSH_CA"
+        set password ENC SHzFIDUKo0yzCQFkoNwDqeiPvd2ivk48D9D435S5ZjCmkmdyotpWX8fd3bvfHuVDniSXhwl3iESo3LKW4H+AP8+MKYIknssBysX95c3TfKTuafqf2h3sy2sxvtLxGCgncxAoOvSWzTow1b2lFT/IBq+KeVm206sic+/iXvdAa1vjmpaazKt+dg6h7ZxcoxN9koMzxg==
+        set source built-in
+    next
+    edit "Fortinet_SSH_CA_Untrusted"
+        set password ENC PE0SM2BWT1NdleAU0x90jFtpzneU47bqOZE8JMG5F5SpG9sY0tGlWe1e5w6dYvk5FuTTHcIs9A/uxsJJD07NTDWMHUcgvNIK+aQqzQvAfE/D8cY6doJ6Bpo+xCw6+GEzfGDORBV6ooVLgKS4ShocNH6sJyeMc2UndNipvlEVpolsXxHFFJauh0/HQj6tdI01M55TVA==
+        set source built-in
+    next
+end
+config firewall ssh setting
+    set caname "Fortinet_SSH_CA"
+    set untrusted-caname "Fortinet_SSH_CA_Untrusted"
+    set hostkey-rsa2048 "Fortinet_SSH_RSA2048"
+    set hostkey-dsa1024 "Fortinet_SSH_DSA1024"
+    set hostkey-ecdsa256 "Fortinet_SSH_ECDSA256"
+    set hostkey-ecdsa384 "Fortinet_SSH_ECDSA384"
+    set hostkey-ecdsa521 "Fortinet_SSH_ECDSA521"
+    set hostkey-ed25519 "Fortinet_SSH_ED25519"
+end
+config firewall profile-protocol-options
+    edit "default"
+        set comment "All default services."
+        config http
+            set ports 80
+            unset options
+            unset post-lang
+        end
+        config ftp
+            set ports 21
+            set options splice
+        end
+        config imap
+            set ports 143
+            set options fragmail
+        end
+        config mapi
+            set ports 135
+            set options fragmail
+        end
+        config pop3
+            set ports 110
+            set options fragmail
+        end
+        config smtp
+            set ports 25
+            set options fragmail splice
+        end
+        config nntp
+            set ports 119
+            set options splice
+        end
+        config ssh
+            unset options
+        end
+        config dns
+            set ports 53
+        end
+        config cifs
+            set ports 445
+            unset options
+        end
+    next
+end
+config firewall ssl-ssh-profile
+    edit "deep-inspection"
+        set comment "Read-only deep inspection profile."
+        config https
+            set ports 443
+            set status deep-inspection
+        end
+        config ftps
+            set ports 990
+            set status deep-inspection
+        end
+        config imaps
+            set ports 993
+            set status deep-inspection
+        end
+        config pop3s
+            set ports 995
+            set status deep-inspection
+        end
+        config smtps
+            set ports 465
+            set status deep-inspection
+        end
+        config ssh
+            set ports 22
+            set status disable
+        end
+        config dot
+            set status disable
+        end
+        config ssl-exempt
+            edit 1
+                set fortiguard-category 31
+            next
+            edit 2
+                set fortiguard-category 33
+            next
+            edit 3
+                set type wildcard-fqdn
+                set wildcard-fqdn "adobe"
+            next
+            edit 4
+                set type wildcard-fqdn
+                set wildcard-fqdn "Adobe Login"
+            next
+            edit 5
+                set type wildcard-fqdn
+                set wildcard-fqdn "android"
+            next
+            edit 6
+                set type wildcard-fqdn
+                set wildcard-fqdn "apple"
+            next
+            edit 7
+                set type wildcard-fqdn
+                set wildcard-fqdn "appstore"
+            next
+            edit 8
+                set type wildcard-fqdn
+                set wildcard-fqdn "auth.gfx.ms"
+            next
+            edit 9
+                set type wildcard-fqdn
+                set wildcard-fqdn "citrix"
+            next
+            edit 10
+                set type wildcard-fqdn
+                set wildcard-fqdn "dropbox.com"
+            next
+            edit 11
+                set type wildcard-fqdn
+                set wildcard-fqdn "eease"
+            next
+            edit 12
+                set type wildcard-fqdn
+                set wildcard-fqdn "firefox update server"
+            next
+            edit 13
+                set type wildcard-fqdn
+                set wildcard-fqdn "fortinet"
+            next
+            edit 14
+                set type wildcard-fqdn
+                set wildcard-fqdn "googleapis.com"
+            next
+            edit 15
+                set type wildcard-fqdn
+                set wildcard-fqdn "google-drive"
+            next
+            edit 16
+                set type wildcard-fqdn
+                set wildcard-fqdn "google-play2"
+            next
+            edit 17
+                set type wildcard-fqdn
+                set wildcard-fqdn "google-play3"
+            next
+            edit 18
+                set type wildcard-fqdn
+                set wildcard-fqdn "Gotomeeting"
+            next
+            edit 19
+                set type wildcard-fqdn
+                set wildcard-fqdn "icloud"
+            next
+            edit 20
+                set type wildcard-fqdn
+                set wildcard-fqdn "itunes"
+            next
+            edit 21
+                set type wildcard-fqdn
+                set wildcard-fqdn "microsoft"
+            next
+            edit 22
+                set type wildcard-fqdn
+                set wildcard-fqdn "skype"
+            next
+            edit 23
+                set type wildcard-fqdn
+                set wildcard-fqdn "softwareupdate.vmware.com"
+            next
+            edit 24
+                set type wildcard-fqdn
+                set wildcard-fqdn "verisign"
+            next
+            edit 25
+                set type wildcard-fqdn
+                set wildcard-fqdn "Windows update 2"
+            next
+            edit 26
+                set type wildcard-fqdn
+                set wildcard-fqdn "live.com"
+            next
+            edit 27
+                set type wildcard-fqdn
+                set wildcard-fqdn "google-play"
+            next
+            edit 28
+                set type wildcard-fqdn
+                set wildcard-fqdn "update.microsoft.com"
+            next
+            edit 29
+                set type wildcard-fqdn
+                set wildcard-fqdn "swscan.apple.com"
+            next
+            edit 30
+                set type wildcard-fqdn
+                set wildcard-fqdn "autoupdate.opera.com"
+            next
+            edit 31
+                set type wildcard-fqdn
+                set wildcard-fqdn "cdn-apple"
+            next
+            edit 32
+                set type wildcard-fqdn
+                set wildcard-fqdn "mzstatic-apple"
+            next
+        end
+    next
+    edit "custom-deep-inspection"
+        set comment "Customizable deep inspection profile."
+        config https
+            set ports 443
+            set status deep-inspection
+        end
+        config ftps
+            set ports 990
+            set status deep-inspection
+        end
+        config imaps
+            set ports 993
+            set status deep-inspection
+        end
+        config pop3s
+            set ports 995
+            set status deep-inspection
+        end
+        config smtps
+            set ports 465
+            set status deep-inspection
+        end
+        config ssh
+            set ports 22
+            set status disable
+        end
+        config dot
+            set status disable
+        end
+        config ssl-exempt
+            edit 1
+                set fortiguard-category 31
+            next
+            edit 2
+                set fortiguard-category 33
+            next
+            edit 3
+                set type wildcard-fqdn
+                set wildcard-fqdn "adobe"
+            next
+            edit 4
+                set type wildcard-fqdn
+                set wildcard-fqdn "Adobe Login"
+            next
+            edit 5
+                set type wildcard-fqdn
+                set wildcard-fqdn "android"
+            next
+            edit 6
+                set type wildcard-fqdn
+                set wildcard-fqdn "apple"
+            next
+            edit 7
+                set type wildcard-fqdn
+                set wildcard-fqdn "appstore"
+            next
+            edit 8
+                set type wildcard-fqdn
+                set wildcard-fqdn "auth.gfx.ms"
+            next
+            edit 9
+                set type wildcard-fqdn
+                set wildcard-fqdn "citrix"
+            next
+            edit 10
+                set type wildcard-fqdn
+                set wildcard-fqdn "dropbox.com"
+            next
+            edit 11
+                set type wildcard-fqdn
+                set wildcard-fqdn "eease"
+            next
+            edit 12
+                set type wildcard-fqdn
+                set wildcard-fqdn "firefox update server"
+            next
+            edit 13
+                set type wildcard-fqdn
+                set wildcard-fqdn "fortinet"
+            next
+            edit 14
+                set type wildcard-fqdn
+                set wildcard-fqdn "googleapis.com"
+            next
+            edit 15
+                set type wildcard-fqdn
+                set wildcard-fqdn "google-drive"
+            next
+            edit 16
+                set type wildcard-fqdn
+                set wildcard-fqdn "google-play2"
+            next
+            edit 17
+                set type wildcard-fqdn
+                set wildcard-fqdn "google-play3"
+            next
+            edit 18
+                set type wildcard-fqdn
+                set wildcard-fqdn "Gotomeeting"
+            next
+            edit 19
+                set type wildcard-fqdn
+                set wildcard-fqdn "icloud"
+            next
+            edit 20
+                set type wildcard-fqdn
+                set wildcard-fqdn "itunes"
+            next
+            edit 21
+                set type wildcard-fqdn
+                set wildcard-fqdn "microsoft"
+            next
+            edit 22
+                set type wildcard-fqdn
+                set wildcard-fqdn "skype"
+            next
+            edit 23
+                set type wildcard-fqdn
+                set wildcard-fqdn "softwareupdate.vmware.com"
+            next
+            edit 24
+                set type wildcard-fqdn
+                set wildcard-fqdn "verisign"
+            next
+            edit 25
+                set type wildcard-fqdn
+                set wildcard-fqdn "Windows update 2"
+            next
+            edit 26
+                set type wildcard-fqdn
+                set wildcard-fqdn "live.com"
+            next
+            edit 27
+                set type wildcard-fqdn
+                set wildcard-fqdn "google-play"
+            next
+            edit 28
+                set type wildcard-fqdn
+                set wildcard-fqdn "update.microsoft.com"
+            next
+            edit 29
+                set type wildcard-fqdn
+                set wildcard-fqdn "swscan.apple.com"
+            next
+            edit 30
+                set type wildcard-fqdn
+                set wildcard-fqdn "autoupdate.opera.com"
+            next
+            edit 31
+                set type wildcard-fqdn
+                set wildcard-fqdn "cdn-apple"
+            next
+            edit 32
+                set type wildcard-fqdn
+                set wildcard-fqdn "mzstatic-apple"
+            next
+        end
+    next
+    edit "no-inspection"
+        set comment "Read-only profile that does no inspection."
+        config https
+            set status disable
+        end
+        config ftps
+            set status disable
+        end
+        config imaps
+            set status disable
+        end
+        config pop3s
+            set status disable
+        end
+        config smtps
+            set status disable
+        end
+        config ssh
+            set ports 22
+            set status disable
+        end
+        config dot
+            set status disable
+        end
+    next
+    edit "certificate-inspection"
+        set comment "Read-only SSL handshake inspection profile."
+        config https
+            set ports 443
+            set status certificate-inspection
+        end
+        config ftps
+            set status disable
+        end
+        config imaps
+            set status disable
+        end
+        config pop3s
+            set status disable
+        end
+        config smtps
+            set status disable
+        end
+        config ssh
+            set ports 22
+            set status disable
+        end
+        config dot
+            set status disable
+        end
+    next
+end
+config waf profile
+    edit "default"
+        config signature
+            config main-class 100000000
+                set action block
+                set severity high
+            end
+            config main-class 20000000
+            end
+            config main-class 30000000
+                set status enable
+                set action block
+                set severity high
+            end
+            config main-class 40000000
+            end
+            config main-class 50000000
+                set status enable
+                set action block
+                set severity high
+            end
+            config main-class 60000000
+            end
+            config main-class 70000000
+                set status enable
+                set action block
+                set severity high
+            end
+            config main-class 80000000
+                set status enable
+                set severity low
+            end
+            config main-class 110000000
+                set status enable
+                set severity high
+            end
+            config main-class 90000000
+                set status enable
+                set action block
+                set severity high
+            end
+            set disabled-signature 80080005 80200001 60030001 60120001 80080003 90410001 90410002
+        end
+        config constraint
+            config header-length
+                set status enable
+                set log enable
+                set severity low
+            end
+            config content-length
+                set status enable
+                set log enable
+                set severity low
+            end
+            config param-length
+                set status enable
+                set log enable
+                set severity low
+            end
+            config line-length
+                set status enable
+                set log enable
+                set severity low
+            end
+            config url-param-length
+                set status enable
+                set log enable
+                set severity low
+            end
+            config version
+                set log enable
+            end
+            config method
+                set action block
+                set log enable
+            end
+            config hostname
+                set action block
+                set log enable
+            end
+            config malformed
+                set log enable
+            end
+            config max-cookie
+                set status enable
+                set log enable
+                set severity low
+            end
+            config max-header-line
+                set status enable
+                set log enable
+                set severity low
+            end
+            config max-url-param
+                set status enable
+                set log enable
+                set severity low
+            end
+            config max-range-segment
+                set status enable
+                set log enable
+                set severity high
+            end
+        end
+    next
+end
+config firewall policy
+    edit 1
+        set name "DENY-SSH-SINPRIV-WEB"
+        set uuid ef153b5c-c4e2-51f1-64cb-a9313c9d5b37
+        set srcintf "VLAN 10"
+        set dstintf "port3"
+        set srcaddr "PC-SIN-PRIV"
+        set dstaddr "SRV-CAJA"
+        set schedule "always"
+        set service "SSH"
+        set logtraffic all
+    next
+    edit 2
+        set name "DENY-SSH-SINPRIV-JUMP"
+        set uuid 1a1df0a0-c4e3-51f1-9c7f-6998398ab5db
+        set srcintf "VLAN 10"
+        set dstintf "port4"
+        set srcaddr "PC-SIN-PRIV"
+        set dstaddr "SRV-JUMP"
+        set schedule "always"
+        set service "SSH"
+        set logtraffic all
+    next
+    edit 3
+        set name "USUARIOS-A-JUMP"
+        set uuid 3faebb9c-c4e3-51f1-95c5-c6fa49e6e6aa
+        set srcintf "VLAN 10"
+        set dstintf "port4"
+        set action accept
+        set srcaddr "RED-USUARIOS"
+        set dstaddr "SRV-JUMP"
+        set schedule "always"
+        set service "HTTPS" "RDP"
+        set logtraffic all
+    next
+    edit 4
+        set name "JUMP-A-WEB"
+        set uuid 6aef1310-c4e3-51f1-7103-5bd9badedf7e
+        set srcintf "port4"
+        set dstintf "port3"
+        set action accept
+        set srcaddr "SRV-JUMP"
+        set dstaddr "SRV-CAJA"
+        set schedule "always"
+        set service "HTTPS" "RDP" "SSH"
+        set logtraffic all
+    next
+    edit 6
+        set name "vpn_VPN-CLIENTE_local_0"
+        set uuid da41dab6-c526-51f1-68b7-d7453530c2ab
+        set srcintf "port4"
+        set dstintf "VPN-CLIENTE"
+        set action accept
+        set srcaddr "VPN-CLIENTE_local"
+        set dstaddr "VPN-CLIENTE_remote"
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: VPN-CLIENTE (Created by VPN wizard)"
+    next
+    edit 7
+        set name "vpn_VPN-CLIENTE_remote_0"
+        set uuid da4fce5a-c526-51f1-3ce4-1863280ed769
+        set srcintf "VPN-CLIENTE"
+        set dstintf "port4"
+        set action accept
+        set srcaddr "VPN-CLIENTE_remote"
+        set dstaddr "SRV-JUMP"
+        set schedule "always"
+        set service "HTTPS" "RDP"
+        set comments "VPN: VPN-CLIENTE (Created by VPN wizard)"
+    next
+end
+config switch-controller security-policy 802-1X
+    edit "802-1X-policy-default"
+        set user-group "SSO_Guest_Users"
+        set mac-auth-bypass disable
+        set open-auth disable
+        set eap-passthru enable
+        set eap-auto-untagged-vlans enable
+        set guest-vlan disable
+        set auth-fail-vlan disable
+        set framevid-apply enable
+        set radius-timeout-overwrite disable
+        set authserver-timeout-vlan disable
+    next
+end
+config switch-controller security-policy local-access
+    edit "default"
+        set mgmt-allowaccess https ping ssh
+        set internal-allowaccess https ping ssh
+    next
+end
+config switch-controller lldp-profile
+    edit "default"
+        set med-tlvs inventory-management network-policy location-identification
+        set auto-isl disable
+        config med-network-policy
+            edit "voice"
+            next
+            edit "voice-signaling"
+            next
+            edit "guest-voice"
+            next
+            edit "guest-voice-signaling"
+            next
+            edit "softphone-voice"
+            next
+            edit "video-conferencing"
+            next
+            edit "streaming-video"
+            next
+            edit "video-signaling"
+            next
+        end
+        config med-location-service
+            edit "coordinates"
+            next
+            edit "address-civic"
+            next
+            edit "elin-number"
+            next
+        end
+    next
+    edit "default-auto-isl"
+    next
+    edit "default-auto-mclag-icl"
+        set auto-mclag-icl enable
+    next
+end
+config switch-controller qos dot1p-map
+    edit "voice-dot1p"
+        set priority-0 queue-4
+        set priority-1 queue-4
+        set priority-2 queue-3
+        set priority-3 queue-2
+        set priority-4 queue-3
+        set priority-5 queue-1
+        set priority-6 queue-2
+        set priority-7 queue-2
+    next
+end
+config switch-controller qos ip-dscp-map
+    edit "voice-dscp"
+        config map
+            edit "1"
+                set cos-queue 1
+                set value 46
+            next
+            edit "2"
+                set cos-queue 2
+                set value 24,26,48,56
+            next
+            edit "5"
+                set cos-queue 3
+                set value 34
+            next
+        end
+    next
+end
+config switch-controller qos queue-policy
+    edit "default"
+        set schedule round-robin
+        set rate-by kbps
+        config cos-queue
+            edit "queue-0"
+            next
+            edit "queue-1"
+            next
+            edit "queue-2"
+            next
+            edit "queue-3"
+            next
+            edit "queue-4"
+            next
+            edit "queue-5"
+            next
+            edit "queue-6"
+            next
+            edit "queue-7"
+            next
+        end
+    next
+    edit "voice-egress"
+        set schedule weighted
+        set rate-by kbps
+        config cos-queue
+            edit "queue-0"
+            next
+            edit "queue-1"
+                set weight 0
+            next
+            edit "queue-2"
+                set weight 6
+            next
+            edit "queue-3"
+                set weight 37
+            next
+            edit "queue-4"
+                set weight 12
+            next
+            edit "queue-5"
+            next
+            edit "queue-6"
+            next
+            edit "queue-7"
+            next
+        end
+    next
+end
+config switch-controller qos qos-policy
+    edit "default"
+    next
+    edit "voice-qos"
+        set trust-dot1p-map "voice-dot1p"
+        set trust-ip-dscp-map "voice-dscp"
+        set queue-policy "voice-egress"
+    next
+end
+config switch-controller storm-control-policy
+    edit "default"
+        set description "default storm control on all port"
+    next
+    edit "auto-config"
+        set description "storm control policy for fortilink-isl-icl port"
+        set storm-control-mode disabled
+    next
+end
+config switch-controller auto-config policy
+    edit "default"
+    next
+    edit "default-icl"
+        set poe-status disable
+        set igmp-flood-report enable
+        set igmp-flood-traffic enable
+    next
+end
+config switch-controller initial-config template
+    edit "_default"
+        set vlanid 1
+    next
+    edit "quarantine"
+        set vlanid 4093
+        set dhcp-server enable
+    next
+    edit "rspan"
+        set vlanid 4092
+        set dhcp-server enable
+    next
+    edit "voice"
+        set vlanid 4091
+    next
+    edit "video"
+        set vlanid 4090
+    next
+    edit "onboarding"
+        set vlanid 4089
+    next
+    edit "nac_segment"
+        set vlanid 4088
+        set dhcp-server enable
+    next
+end
+config switch-controller switch-profile
+    edit "default"
+    next
+end
+config switch-controller ptp settings
+    set mode disable
+end
+config switch-controller ptp policy
+    edit "default"
+        set status enable
+    next
+end
+config switch-controller remote-log
+    edit "syslogd"
+    next
+    edit "syslogd2"
+    next
+end
+config wireless-controller setting
+    set darrp-optimize-schedules "default-darrp-optimize"
+end
+config wireless-controller arrp-profile
+    edit "arrp-default"
+    next
+end
+config wireless-controller wids-profile
+    edit "default"
+        set comment "Default WIDS profile."
+        set ap-scan enable
+        set wireless-bridge enable
+        set deauth-broadcast enable
+        set null-ssid-probe-resp enable
+        set long-duration-attack enable
+        set invalid-mac-oui enable
+        set weak-wep-iv enable
+        set auth-frame-flood enable
+        set assoc-frame-flood enable
+        set spoofed-deauth enable
+        set asleap-attack enable
+        set eapol-start-flood enable
+        set eapol-logoff-flood enable
+        set eapol-succ-flood enable
+        set eapol-fail-flood enable
+        set eapol-pre-succ-flood enable
+        set eapol-pre-fail-flood enable
+    next
+    edit "default-wids-apscan-enabled"
+        set ap-scan enable
+    next
+end
+config wireless-controller ble-profile
+    edit "fortiap-discovery"
+        set advertising ibeacon eddystone-uid eddystone-url
+        set ibeacon-uuid "wtp-uuid"
+    next
+end
+config router rip
+    config redistribute "connected"
+    end
+    config redistribute "static"
+    end
+    config redistribute "ospf"
+    end
+    config redistribute "bgp"
+    end
+    config redistribute "isis"
+    end
+end
+config router ripng
+    config redistribute "connected"
+    end
+    config redistribute "static"
+    end
+    config redistribute "ospf"
+    end
+    config redistribute "bgp"
+    end
+    config redistribute "isis"
+    end
+end
+config router static
+    edit 1
+        set dst 201.9.49.0 255.255.255.252
+        set gateway 200.9.49.1
+        set device "port5"
+    next
+    edit 2
+        set gateway 192.168.42.1
+        set device "port1"
+    next
+    edit 3
+        set device "VPN-CLIENTE"
+        set comment "VPN: VPN-CLIENTE (Created by VPN wizard)"
+        set dstaddr "VPN-CLIENTE_remote"
+    next
+    edit 4
+        set distance 254
+        set comment "VPN: VPN-CLIENTE (Created by VPN wizard)"
+        set blackhole enable
+        set dstaddr "VPN-CLIENTE_remote"
+    next
+end
+config router ospf
+    config redistribute "connected"
+    end
+    config redistribute "static"
+    end
+    config redistribute "rip"
+    end
+    config redistribute "bgp"
+    end
+    config redistribute "isis"
+    end
+end
+config router ospf6
+    config redistribute "connected"
+    end
+    config redistribute "static"
+    end
+    config redistribute "rip"
+    end
+    config redistribute "bgp"
+    end
+    config redistribute "isis"
+    end
+end
+config router bgp
+    config redistribute "connected"
+    end
+    config redistribute "rip"
+    end
+    config redistribute "ospf"
+    end
+    config redistribute "static"
+    end
+    config redistribute "isis"
+    end
+    config redistribute6 "connected"
+    end
+    config redistribute6 "rip"
+    end
+    config redistribute6 "ospf"
+    end
+    config redistribute6 "static"
+    end
+    config redistribute6 "isis"
+    end
+end
+config router isis
+    config redistribute "connected"
+    end
+    config redistribute "rip"
+    end
+    config redistribute "ospf"
+    end
+    config redistribute "bgp"
+    end
+    config redistribute "static"
+    end
+    config redistribute6 "connected"
+    end
+    config redistribute6 "rip"
+    end
+    config redistribute6 "ospf"
+    end
+    config redistribute6 "bgp"
+    end
+    config redistribute6 "static"
+    end
+end
+config router multicast
+end
+
+FW-FORTIGATE #
+
